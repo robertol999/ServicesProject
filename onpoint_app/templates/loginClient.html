@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- stella-orre/contact.html  30 Nov 2019 03:46:40 GMT -->
+<head>
+<meta charset="utf-8">
+<title>Stella Orr'e - Interior and Home Renovation HTML Template | Contact</title>
+<!-- Stylesheets -->
+<link href="/static/css/bootstrap.css" rel="stylesheet">
+<link href="/static/css/style.css" rel="stylesheet">
+<link href="/static/css/responsive.css" rel="stylesheet">
+
+<link rel="shortcut icon" href="/static/images/favicon.png" type="image/x-icon">
+<link rel="icon" href="/static/images/favicon.png" type="image/x-icon">
+
+<!-- Responsive -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+</head>
+
+<body>
+
+<div class="page-wrapper">
+    <!-- Preloader -->
+    <div class="preloader"></div>
+
+    <header class="main-header header-style-one">
+        <!--Header Top-->
+        <div class="header-top">
+            <div class="auto-container clearfix">
+                <div class="top-left clearfix">
+                    <div class="text"><span class="icon flaticon-call-answer"></span> Need help? Call Us Now : <a href="tel:1800-456-7890" class="number">1800 456 7890</a></div>
+					
+                </div>
+                <div class="top-right clearfix">
+                    <!-- Info List -->
+					<ul class="info-list">
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="blog.html">Inspiration</a></li>
+						<li class="quote"><a href="contact.html">Get Free Quote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- End Header Top -->
+
+        <!-- Header Upper -->
+        <div class="header-upper">
+            <div class="inner-container">
+                <div class="auto-container clearfix">
+                    <!--Info-->
+                    <div class="logo-outer">
+                        <div class="logo"><a href="index-2.html"><img src="images/logo.png" alt="" title=""></a></div>
+                    </div>
+
+                    <!--Nav Box-->
+                   
+                </div>
+            </div>
+        </div>
+        <!--End Header Upper-->
+
+    	<!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><span class="icon flaticon-cancel"></span></div>
+            
+            <nav class="menu-box">
+                <div class="nav-logo"><a href="index-2.html"><img src="images/logo.png" alt="" title=""></a></div>
+                <ul class="navigation clearfix"><!--Keep This Empty / Menu will come through Javascript--></ul>
+				<!--Social Links-->
+				<div class="social-links">
+					<ul class="clearfix">
+						<li><a href="#"><span class="fab fa-twitter"></span></a></li>
+						<li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+						<li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+						<li><a href="#"><span class="fab fa-instagram"></span></a></li>
+						<li><a href="#"><span class="fab fa-youtube"></span></a></li>
+					</ul>
+                </div>
+            </nav>
+        </div><!-- End Mobile Menu -->
+
+    </header>
+    <!-- End Main Header -->
+
+    <!--Page Title-->
+    <section class="page-title" style="background-image:url(/static/images/background/5.jpg)">
+    	<div class="auto-container">
+        	
+            <ul class="page-breadcrumb">
+            </ul>
+        </div>
+    </section>
+    <!--End Page Title-->
+	
+	<!-- Contact Form Section -->
+	<section class="contact-form-section" style="background-image:url(images/background/contact.png)">
+		<div class="auto-container">
+			<!-- Sec Title -->
+			<div class="sec-title">
+				<div class="card w-100">
+                    <form action="/login" class="form active" id="login" method="post">
+                        <h2>Login</h2>
+                        <label for="email">Email Address</label>
+                        <div class="pass-reset" >
+                            <input type="email" name="email" class="email" id="emailInput" placeholder="">
+                        </div>
+                        <label for="password">Password</label>
+                        <div class="pass-reset">
+                            <input type="password" class="password" name="password" id="password" placeholder="">
+                        </div>
+                        <button class="btn btn-login"  type="submit" >Login</button>
+                        <p>Don't have an account? <a onclick="changeToRegister()" id="changeToRegister">Sign up</a></p>
+                    </form>
+                    <form action="/registerProvider" class="form" id="register" method="post">
+                        <h2>Register</h2>
+                        <label for="first_name">First Name</label>
+                        <div class="pass-reset" >
+                            <input type="text" name="first_name" class="first_name" id="first_name" placeholder="">
+                        </div>
+                        <label for="last_name">Last Name</label>
+                        <div class="pass-reset" onclick="activeInput(this)">
+                        <input type="text" name="last_name" class="last_name" id="last_name" placeholder="">
+                        </div>
+                        <label for="Email">Email</label>
+                        <div class="pass-reset" onclick="activeInput(this)">
+                            <input type="email" name="email" class="email" id="email" placeholder="">
+                        </div>
+                          
+                        <label for="about">About</label>
+                        <div class="pass-reset" onclick="activeInput(this)">
+                            <input type="tex" name="about" class="about" id="about" placeholder="">
+                        </div>
+                        <label for="password">Password</label>
+                        <div class="pass-reset" onclick="activeInput(this)">
+                            <input type="password" class="password" name="password" id="password" placeholder="">
+                        </div>
+                        <label for="re-password">Re-Password</label>
+                        <div class="pass-reset" onclick="activeInput(this)">
+                            <input type="password" class="password" name="confirmpassword" id="confirmpassword" placeholder="">
+                        </div>
+                        <button class="btn btn-login"  type="submit" >Register</button>
+                        <p>Do you have an account? <a onclick="changeToLogin()" id="chnageToLogin">Sign in</a></p>
+            
+                    </form>
+                        </div>
+			</div>
+			
+			
+			
+		</div>
+	</section>
+	<!-- End Contact Form Section -->
+	
+	<!-- Map Section -->
+    
+    <!-- End Map Section -->
+	
+	<!--Main Footer-->
+    
+	
+</div>  
+<!--End pagewrapper-->
+
+<!--Scroll to top-->
+<div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
+
+<!--Search Popup-->
+
+<!--Scroll to top-->
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/popper.min.js"></script>
+<script src="/static/js/jquery-ui.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/jquery.fancybox.js"></script>
+<script src="/static/js/isotope.js"></script>
+<script src="/staticjs/owl.js"></script>
+<script src="/static/js/wow.js"></script>
+<script src="/static/js/validate.js"></script>
+<script src="/static/js/appear.js"></script>
+<script src="/static/js/scrollbar.js"></script>
+<script src="/static/js/script.js"></script>
+<!--Google Map APi Key-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-CE0deH3Jhj6GN4YvdCFZS7DpbXexzGU"></script>
+<script src="/static/js/map-script.js"></script>
+<!--End Google Map APi-->
+</body>
+
+<!-- stella-orre/contact.html  30 Nov 2019 03:46:47 GMT -->
+</html>

@@ -1,0 +1,296 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>OnPoint</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom-bs.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.fancybox.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-select.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fonts/icomoon/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fonts/line-icons/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css') }}">
+    
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+       
+  </head>
+  <body id="top">
+
+  <div id="overlayer"></div>
+  <div class="loader">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+    
+
+<div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
+    
+
+    <!-- NAVBAR -->
+    <header class="site-navbar mt-3">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          {% if provider_id == session['provider_id'] %}"
+          <div class="d-flex site-logo col-6"><a href="/dashboard"><img class="w-25" src="/static/images/O2.png" alt="" /></a></div>
+          {% endif %}
+          {% if costumer_id == session['costumer_id'] %}"
+          <div class="d-flex site-logo col-6"><a href="/dashboardProvider"><img class="w-25" src="/static/images/O2.png" alt="" /></a></div>
+          {% endif %}
+          <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
+            <div class="ml-auto">
+              {% if costumer_id == session['costumer_id'] %}" 
+              <a href="/job/edit/{{job.id}}" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-add"></span>Edit Profile</a>
+              <a href="/dashboardProvider" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-add"></span>Home</a>
+              <a href="/postajob" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-add"></span>Create Profile</a>
+              {% endif %}
+              <a href="/logoutProvider" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Log Out</a>
+            </div>
+            <a href="#" class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span class="icon-menu h3 m-0 p-0 mt-2"></span></a>
+          </div>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- HOME -->
+   <section class="home-section section-hero overlay bg-image" style="background-image: url('{{ url_for('static', filename='images/hero_1.jpg') }}');" id="home-section">
+
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-12">
+            <div class="mb-5 text-center">
+              <h1 class="text-white font-weight-bold">The Easiest Way To Get Your Dream Employee</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#next" class="scroll-button smoothscroll">
+        <span class=" icon-keyboard_arrow_down"></span>
+      </a>
+
+    </section>
+    <section class="py-5 bg-image overlay-primary fixed overlay" id="next" style="background-image: url({{ url_for('static', filename='images/hero_1.jpg') }});">
+
+    </section>
+
+    
+    <section class="site-section">
+      <div class="container">
+        <div class="row align-items-center mb-5">
+          <div class="col-lg-8 mb-4 mb-lg-0">
+            <div class="d-flex align-items-center">
+              <div class="border p-2 d-inline-block mr-3 rounded">
+                <img src="../../static/job_images/{{job.job_post_image}}" alt="Image" class="img-fluid mb-0" width="200" height="200">
+              </div>
+              <div>
+                <h2>{{loggedProvider.first_name}}</h2>
+                <div>
+                  <span class="ml-0 mr-2 mb-2"><span class="icon-briefcase mr-2"></span>{{loggedProvider.profession}}</span>
+                  <span class="m-2"><span class="icon-clock-o mr-2"></span><span class="text-primary">
+                    {% if job.employment_status == "part_time" %}
+                      Part-Time
+                    {% else %}
+                      Full-Time
+                    {% endif %}
+                  </span></span>
+                   </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="row">
+             
+              <div class="col-6">
+                {% if provider_id == session['provider_id'] %}"
+                <a href="mailto:{{jobcreator.email}}" class="btn btn-block btn-primary btn-md">Apply Now</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="mb-5">
+              
+              <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span class="icon-align-left mr-3"></span>Job Description</h3>
+              <p>{{job.description}}</p>
+            </div>
+            <div class="mb-5">
+              <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span class="icon-rocket mr-3"></span>Address</h3>
+              <ul class="list-unstyled m-0 p-0">
+              
+                <li class="d-flex align-items-start mb-2"><span class="icon-check_circle mr-2 text-muted"></span><span>{{job.address}}</span></li>
+             </ul>
+            </div>
+
+            <div class="mb-5">
+              <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span class="icon-book mr-3"></span>Education + Experience</h3>
+              <ul class="list-unstyled m-0 p-0">
+                <li class="d-flex align-items-start mb-2"><span class="icon-check_circle mr-2 text-muted"></span><span>{{job.education_experience}}</span></li>
+             </ul>
+            </div>
+
+            <div class="mb-5">
+              <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span class="icon-turned_in mr-3"></span>City</h3>
+              <ul class="list-unstyled m-0 p-0">
+                <li class="d-flex align-items-start mb-2"><span class="icon-check_circle mr-2 text-muted"></span><span>{{job.city}}</span></li>
+             </ul>
+            </div>
+
+            <div class="row mb-5">
+          
+              <div class="col-6">
+                {% if provider_id == session['provider_id'] %}"
+                 <div>
+                  <div class="box m-5 d-flex justify-content-center align-items-center">
+                      
+                    <a  href="/checkout/paypal" class="btn btn-block btn-primary btn-md"><span id="pay">Pay</span><span id="pal">Pal</span><span id="checkout" class="mx-3">Checkout</span></a>
+                     
+                  
+                  </div>
+                  {{pagesat}}
+                {% endif %}
+               
+                    
+              </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-lg-4">
+            <div class="bg-light p-3 border rounded mb-4">
+              <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Job Summary</h3>
+              <ul class="list-unstyled pl-3 mb-0">
+                <li class="mb-2"><strong class="text-black">Published on:</strong>{{job.created_at}}</li>
+                {% if job.employment_status == "part_time" %}
+                {% set employment_status = "Part-Time" %}
+                {% else %}
+                {% set employment_status = "Full-Time" %}
+                {% endif %}
+                <li class="mb-2"><strong class="text-black">Employment Status:</strong> {{ employment_status }}</li>
+                <li class="mb-2"><strong class="text-black">Experience:</strong> {{ job.experience }} <p class="d-inline">year(s)</p></li>
+                <li class="mb-2"><strong class="text-black">City:</strong><p class="d-inline"> {{job.city}}</p></li>
+              </ul>
+            </div>
+
+            <div class="bg-light p-3 border rounded">
+              <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Share</h3>
+              <div class="px-3">
+                <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-facebook"></span></a>
+                <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-twitter"></span></a>
+                <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-linkedin"></span></a>
+                <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-pinterest"></span></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5 bg-image overlay-primary fixed overlay" style="background-image: url('{{ url_for('static', filename='images/hero_1.jpg') }}');">
+
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-8">
+            <h2 class="text-white">Looking For Provider?</h2>
+            <p class="mb-0 text-white lead">Create a profile now and find the most suited applicants.</p>
+          </div>
+          <div class="col-md-3 ml-auto">
+            {% if costumer_id == session['costumer_id'] %}" 
+            <a href="/postajob" class="btn btn-warning btn-block btn-lg">Create Profile</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      
+    </section>
+    <footer class="site-footer">
+
+      <a href="#top" class="smoothscroll scroll-top">
+        <span class="icon-keyboard_arrow_up"></span>
+      </a>
+
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-6 col-md-3 mb-4 mb-md-0">
+            <h3>Search Trending</h3>
+            <ul class="list-unstyled">
+              <li><a href="#">Web Design</a></li>
+              <li><a href="#">Graphic Design</a></li>
+              <li><a href="#">Web Developers</a></li>
+              <li><a href="#">Python</a></li>
+              <li><a href="#">HTML5</a></li>
+              <li><a href="#">CSS3</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3 mb-4 mb-md-0">
+            <h3>Company</h3>
+            <ul class="list-unstyled">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Career</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Resources</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3 mb-4 mb-md-0">
+            <h3>Support</h3>
+            <ul class="list-unstyled">
+              <li><a href="#">Support</a></li>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3 mb-4 mb-md-0">
+            <h3>Contact Us</h3>
+            <div class="footer-social">
+              <a href="#"><span class="icon-facebook"></span></a>
+              <a href="#"><span class="icon-twitter"></span></a>
+              <a href="#"><span class="icon-instagram"></span></a>
+              <a href="#"><span class="icon-linkedin"></span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="row text-center">
+          <div class="col-12">
+            <p class="copyright"><small></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  </div>
+
+     <!-- SCRIPTS -->
+     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+     <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+     <script src="{{ url_for('static', filename='js/isotope.pkgd.min.js') }}"></script>
+     <script src="{{ url_for('static', filename='js/stickyfill.min.js') }}"></script>
+     <script src="{{ url_for('static', filename='js/jquery.fancybox.min.js') }}"></script>
+     <script src="{{ url_for('static', filename='js/jquery.easing.1.3.js') }}"></script>
+     <script src="{{ url_for('static', filename='js/jquery.waypoints.min.js') }}"></script>
+     <script src="{{ url_for('static', filename='js/jquery.animateNumber.min.js') }}"></script>
+     <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+     <script src="{{ url_for('static', filename='js/bootstrap-select.min.js') }}"></script>
+     <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+     
+      
+     
+  </body>
+</html>

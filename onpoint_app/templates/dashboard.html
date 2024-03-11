@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>OnPoint</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/custom-bs.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.fancybox.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-select.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='fonts/icomoon/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='fonts/line-icons/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css') }}">
+
+  <!-- MAIN CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='csslogin/bootstrap.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='csslogin/font-awesome.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='csslogin/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='csslogin/responsive.css') }}">
+
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+</head>
+
+
+<body id="top">
+
+  <div id="overlayer"></div>
+  <div class="loader">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+    <!-- NAVBAR -->
+    <header class="site-navbar mt-3">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="d-flex site-logo col-6"><a href="/dashboard"><img class="w-25" src="/static/images/O2.png"
+                alt="" /></a></div>
+
+          <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
+            <div class="ml-auto">
+              <a href="/logout" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span
+                  class="mr-2 icon-lock_outline"></span>Log Out</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- HOME -->
+    <section class="home-section section-hero overlay bg-image"
+      style="background-image: url('{{ url_for('static', filename='images/hero_1.jpg') }}');" id="home-section">
+
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-12">
+            <div class="mb-5 text-center">
+              <h1 class="text-white font-weight-bold">The Easiest Way To Get Your Dream Job</h1>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+      <a href="#next" class="scroll-button smoothscroll">
+        <span class=" icon-keyboard_arrow_down"></span>
+      </a>
+
+    </section>
+    <section class="py-5 bg-image overlay-primary fixed overlay" id="next"
+      style="background-image: url({{ url_for('static', filename='images/hero_1.jpg') }});">
+
+      <div class="container">
+        <div class="row mb-5 justify-content-center">
+          <div class="col-md-7 text-center">
+            <h2 class="section-title mb-2 text-white">JobBoard Site Stats</h2>
+          </div>
+        </div>
+        <div class="row pb-0 block__19738 section-counter">
+
+          <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
+            <div class="d-flex align-items-center justify-content-center mb-2">
+              <strong class="number" data-number="1930">0</strong>
+            </div>
+            <span class="caption">Candidates</span>
+          </div>
+
+          <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
+            <div class="d-flex align-items-center justify-content-center mb-2">
+              <strong class="number" data-number="{{jobposted}}">0</strong>
+            </div>
+            <span class="caption">Jobs Posted</span>
+          </div>
+
+          <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
+            <div class="d-flex align-items-center justify-content-center mb-2">
+              <strong class="number" data-number="120">0</strong>
+            </div>
+            <span class="caption">Jobs Filled</span>
+          </div>
+
+          <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
+            <div class="d-flex align-items-center justify-content-center mb-2">
+              <strong class="number" data-number="550">0</strong>
+            </div>
+            <span class="caption">Companies</span>
+          </div>
+
+
+        </div>
+      </div>
+    </section>
+
+
+ <div class="d-flex ">
+    <section class="w-50 p-4 site-section">
+      <div class=" container ">
+        <div >
+          <h1>All Professions</h1>
+          <ul class="job-listings">
+            {% for profession in professions %}
+            <li>{{ profession }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="w-100 p-4 site-section">
+      <div class="container">
+
+        <div class="row mb-5 justify-content-center">
+          <div class="col-md-7 text-center">
+            <h2 class="section-title mb-2">Profile Listed</h2>
+          </div>
+        </div>
+        
+        <ul class="job-listings">
+          {% for j in job %}
+      
+          <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
+            <a href="/job/{{j.id}}"></a>
+            <div class="job-listing-logo">
+                <img src="../../static/job_images/{{j.job_post_image}}" alt="Free Website Template by Free-Template.co" class="img-fluid">
+
+            </div>
+
+            <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
+              <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
+                <h2>{{j.title}}</h2>
+              </div>
+              <div class="job-listing-location mb-3 mb-sm-0 custom-width pl-5">
+                <span class="icon-room"></span> {{j.description}}
+              </div>
+              <div class="job-listing-meta">
+                <span class="badge {% if j.employment_status == 'full_time' %}badge-success{% else %}badge-danger{% endif %}">
+                  {{ j.employment_status }}
+              </span>
+            </div>
+            
+            </div>
+            
+          </li>
+      
+         <div>
+             
+             {% if j.star_rating is not none %}
+                 <p>Star Rating: {{ j.star_rating }} / 5</p>
+             {% else %}
+                 <p>No rating yet.</p>
+             {% endif %}
+ 
+             <form method="POST" action="{{ url_for('rate_job', job_id=j.id) }}">
+                 <label for="rating">Rate this job:</label>
+                 <select name="rating" id="rating">
+                     <option value="1">1</option>
+                     <option value="2">2</option>
+                     <option value="3">3</option>
+                     <option value="4">4</option>
+                     <option value="5">5</option>
+                 </select>
+                 <button class="btn btn-success" type="submit">Submit Rating</button>
+             </form>
+         </div>
+         <hr>
+     {% endfor %}
+    </section>
+  </div>
+
+
+
+
+    <section class="pt-5 bg-image overlay-primary fixed overlay"
+      style="background-image: url('{{ url_for('static', filename='images/hero_1.jpg') }}');">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-8">
+            <h2 class="text-white">Looking For Provider?</h2>
+            <p class="mb-0 text-white lead">Create a job now and find the most suited applicants.</p>
+          </div>
+          <div class="col-md-3 ml-auto">
+            {% if costumer_id == session['costumer_id'] %}"
+            <a href="/postajob" class="btn btn-warning btn-block btn-lg">Post A Possition</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+
+      <a href="#top" class="smoothscroll scroll-top">
+        <span class="icon-keyboard_arrow_up"></span>
+      </a>
+
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-6 col-md-3 mb-4 mb-md-0">
+            <h3>Search Trending</h3>
+            <ul class="list-unstyled">
+              <li><a href="#">Web Design</a></li>
+              <li><a href="#">Graphic Design</a></li>
+              <li><a href="#">Web Developers</a></li>
+              <li><a href="#">Python</a></li>
+              <li><a href="#">HTML5</a></li>
+              <li><a href="#">CSS3</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3 mb-4 mb-md-0">
+            <h3>Company</h3>
+            <ul class="list-unstyled">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Career</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Resources</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3 mb-4 mb-md-0">
+            <h3>Support</h3>
+            <ul class="list-unstyled">
+              <li><a href="#">Support</a></li>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3 mb-4 mb-md-0">
+            <h3>Contact Us</h3>
+            <div class="footer-social">
+              <a href="#"><span class="icon-facebook"></span></a>
+              <a href="#"><span class="icon-twitter"></span></a>
+              <a href="#"><span class="icon-instagram"></span></a>
+              <a href="#"><span class="icon-linkedin"></span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="row text-center">
+          <div class="col-12">
+            <p class="copyright"><small></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <!-- SCRIPTS -->
+  <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/stickyfill.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.fancybox.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.easing.1.3.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.waypoints.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.animateNumber.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap-select.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const searchIcon = document.getElementById("search-icon");
+      const searchInput = document.getElementById("searchfield");
+
+      searchIcon.addEventListener("click", function () {
+        performSearch();
+      });
+
+      searchInput.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault(); // Prevent the form submission
+          performSearch();
+        }
+      });
+
+      function performSearch() {
+        const searchQuery = searchInput.value;
+        window.location.href = `/results?searchfield=${searchQuery}`;
+      }
+    });
+  </script>
+</body>
+
+</html>
